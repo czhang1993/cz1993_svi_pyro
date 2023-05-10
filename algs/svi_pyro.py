@@ -38,8 +38,8 @@ def guide(data):
 optim = Adam()
     
 svi = SVI(
-    model,
-    guide,
-    optimizer,
+    model=model,
+    guide=guide,
+    optim=optim,
     loss=Trace_ELBO()
 )
