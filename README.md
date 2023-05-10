@@ -1,1 +1,1 @@
-# cz1993_svi_pyro
+# Calvin Zhang - Stochastic Variational Inference via Pyro
