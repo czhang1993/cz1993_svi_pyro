@@ -3,6 +3,7 @@ from pyro import param, sample
 from pyro.distributions import Normal
 from pyro.infer import SVI, Trace_ELBO
 from pyro.optim import Adam
+from tests.data_univariate import x_train, x_test, y_train, y_test
 
 
 def model(data):
