@@ -2,6 +2,7 @@ from torch import Tensor
 from pyro import param, sample
 from pyro.distributions import Normal
 from pyro.infer import SVI, Trace_ELBO
+from pyro.optim import Adam
 
 
 def model(data):
@@ -11,13 +12,13 @@ def model(data):
         name="z",
         fn=Normal(mu, sigma)
     )
-    for i in range(n):
+    for i in range(len(data)):
         sample(
-            name=?,
+            name="obs_{}".format(i),
             fn=Normal(z),
-            ?
+            obs=data[i]
         )
-
+        
         
 def guide(data):
     q_mu = param(
@@ -29,11 +30,13 @@ def guide(data):
         init_tensor=Tensor(1.0)
     )
     sample(
-        name="q_z",
+        name="z",
         fn=Normal(q_mu, q_sigma)
     )
     
-
+    
+optim = Adam()
+    
 svi = SVI(
     model,
     guide,
